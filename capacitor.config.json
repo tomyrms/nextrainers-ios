@@ -3,10 +3,12 @@
 	"appName": "Nextrainers",
 	"webDir": "public",
 	"server": {
-		"url": "https://app.nextrainers.com",
+		"url": "https://nextrainers-frontend-tomy-b89a.vercel.app",
 		"androidScheme": "https",
 		"iosScheme": "https",
 		"allowNavigation": [
+			"nextrainers-frontend-tomy-b89a.vercel.app",
+			"nextrainers-backend-tomy-b89a.vercel.app",
 			"app.nextrainers.com",
 			"clerk.app.nextrainers.com",
 			"*.nextrainers.com",
