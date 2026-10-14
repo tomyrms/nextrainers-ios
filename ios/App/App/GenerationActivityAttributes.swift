@@ -1,8 +1,8 @@
 import Foundation
-import Capacitor
 import ActivityKit
 
-// Shared Live Activity attributes. Also compiled into the widget extension target.
+// Shared Live Activity attributes. Also compiled into the widget extension target
+// (GenerationActivityWidget), so it must not import Capacitor or other app-only modules.
 @available(iOS 16.2, *)
 public struct GenerationActivityAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {

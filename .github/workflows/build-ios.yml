@@ -41,6 +41,16 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             build
 
+      - name: Verify widget extension is embedded
+        run: |
+          APP=ios/build/Build/Products/Release-iphoneos/App.app
+          ls -la "$APP/PlugIns"
+          test -f "$APP/PlugIns/GenerationActivityWidget.appex/GenerationActivityWidget"
+          /usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionPointIdentifier' "$APP/PlugIns/GenerationActivityWidget.appex/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/PlugIns/GenerationActivityWidget.appex/Info.plist"
+          /usr/libexec/PlistBuddy -c 'Print :NSSupportsLiveActivities' "$APP/Info.plist"
+          echo "Firebase symbols linked:"; nm "$APP/App" | grep -c FIRMessaging || true
+
       - name: Package unsigned IPA
         run: |
           mkdir -p dist/Payload

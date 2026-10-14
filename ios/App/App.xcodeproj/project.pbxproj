@@ -19,6 +19,11 @@
 		F442B582D79645B188A05BC5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F61CD878EF74E6E8062651E /* MainViewController.swift */; };
 		2EEC3A7C8E88405284398AAD /* GenerationProgressPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8919E06F748778EA76180 /* GenerationProgressPlugin.swift */; };
 		072F54D7D9694CF49DDEBF19 /* GenerationActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D679A3E644E8C97EE5DF5 /* GenerationActivityAttributes.swift */; };
+		AB0000000000000000000007 /* GenerationActivityWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000004 /* GenerationActivityWidgetBundle.swift */; };
+		AB0000000000000000000008 /* GenerationActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000005 /* GenerationActivityWidget.swift */; };
+		AB0000000000000000000009 /* GenerationActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D679A3E644E8C97EE5DF5 /* GenerationActivityAttributes.swift */; };
+		AB0000000000000000000011 /* GenerationActivityWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000002 /* GenerationActivityWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AB0000000000000000000022 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000000021 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,10 @@
 		8F61CD878EF74E6E8062651E /* MainViewController.swift */ = {isa = PBXFileReference; name = "MainViewController.swift"; path = "MainViewController.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		C9D8919E06F748778EA76180 /* GenerationProgressPlugin.swift */ = {isa = PBXFileReference; name = "GenerationProgressPlugin.swift"; path = "GenerationProgressPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 		346D679A3E644E8C97EE5DF5 /* GenerationActivityAttributes.swift */ = {isa = PBXFileReference; name = "GenerationActivityAttributes.swift"; path = "GenerationActivityAttributes.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		AB0000000000000000000002 /* GenerationActivityWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GenerationActivityWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0000000000000000000004 /* GenerationActivityWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationActivityWidgetBundle.swift; sourceTree = "<group>"; };
+		AB0000000000000000000005 /* GenerationActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationActivityWidget.swift; sourceTree = "<group>"; };
+		AB0000000000000000000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +53,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D22ABE92AF431CB00220026 /* CapApp-SPM in Frameworks */,
+				AB0000000000000000000022 /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB000000000000000000000B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +73,7 @@
 				958DCC722DB07C7200EA8C5F /* debug.xcconfig */,
 				504EC3061FED79650016851F /* App */,
 				504EC3051FED79650016851F /* Products */,
+				AB0000000000000000000003 /* GenerationActivityWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				504EC3041FED79650016851F /* App.app */,
+				AB0000000000000000000002 /* GenerationActivityWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +105,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		AB0000000000000000000003 /* GenerationActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000004 /* GenerationActivityWidgetBundle.swift */,
+				AB0000000000000000000005 /* GenerationActivityWidget.swift */,
+				AB0000000000000000000006 /* Info.plist */,
+			);
+			path = GenerationActivityWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,18 +125,38 @@
 				504EC3001FED79650016851F /* Sources */,
 				504EC3011FED79650016851F /* Frameworks */,
 				504EC3021FED79650016851F /* Resources */,
+				AB0000000000000000000010 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB0000000000000000000013 /* PBXTargetDependency */,
+			);
+			name = App;
+			packageProductDependencies = (
+				4D22ABE82AF431CB00220026 /* CapApp-SPM */,
+				AB0000000000000000000021 /* FirebaseMessaging */,
+			);
+			productName = App;
+			productReference = 504EC3041FED79650016851F /* App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB0000000000000000000001 /* GenerationActivityWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB000000000000000000000D /* Build configuration list for PBXNativeTarget "GenerationActivityWidget" */;
+			buildPhases = (
+				AB000000000000000000000A /* Sources */,
+				AB000000000000000000000B /* Frameworks */,
+				AB000000000000000000000C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = App;
-			packageProductDependencies = (
-				4D22ABE82AF431CB00220026 /* CapApp-SPM */,
-			);
-			productName = App;
-			productReference = 504EC3041FED79650016851F /* App.app */;
-			productType = "com.apple.product-type.application";
+			name = GenerationActivityWidget;
+			productName = GenerationActivityWidget;
+			productReference = AB0000000000000000000002 /* GenerationActivityWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -123,6 +172,9 @@
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
+					AB0000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 504EC2FF1FED79650016851F /* Build configuration list for PBXProject "App" */;
@@ -136,12 +188,14 @@
 			mainGroup = 504EC2FB1FED79650016851F;
 			packageReferences = (
 				D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */,
+				AB0000000000000000000020 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				504EC3031FED79650016851F /* App */,
+				AB0000000000000000000001 /* GenerationActivityWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -160,6 +214,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AB000000000000000000000C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -172,6 +233,16 @@
 				F442B582D79645B188A05BC5 /* MainViewController.swift in Sources */,
 				2EEC3A7C8E88405284398AAD /* GenerationProgressPlugin.swift in Sources */,
 				072F54D7D9694CF49DDEBF19 /* GenerationActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB000000000000000000000A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0000000000000000000007 /* GenerationActivityWidgetBundle.swift in Sources */,
+				AB0000000000000000000008 /* GenerationActivityWidget.swift in Sources */,
+				AB0000000000000000000009 /* GenerationActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +421,58 @@
 			};
 			name = Release;
 		};
+		AB000000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GenerationActivityWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nextrainers.app.GenerationActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB000000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GenerationActivityWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nextrainers.app.GenerationActivityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -371,6 +494,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AB000000000000000000000D /* Build configuration list for PBXNativeTarget "GenerationActivityWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB000000000000000000000E /* Debug */,
+				AB000000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -386,7 +518,55 @@
 			package = D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */;
 			productName = "CapApp-SPM";
 		};
+		AB0000000000000000000021 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB0000000000000000000020 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		AB0000000000000000000012 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 504EC2FC1FED79650016851F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB0000000000000000000001;
+			remoteInfo = GenerationActivityWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		AB0000000000000000000013 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB0000000000000000000001 /* GenerationActivityWidget */;
+			targetProxy = AB0000000000000000000012 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB0000000000000000000010 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AB0000000000000000000011 /* GenerationActivityWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AB0000000000000000000020 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 504EC2FC1FED79650016851F /* Project object */;
 }
