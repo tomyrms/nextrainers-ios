@@ -1,0 +1,10 @@
+node_modules/
+ios/build/
+ios/App/App/public/
+dist/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+npm-debug.log*
+.env

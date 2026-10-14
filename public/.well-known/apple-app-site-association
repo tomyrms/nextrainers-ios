@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8HB9P487C5.com.nextrainers.app",
+        "paths": [
+          "/share/*",
+          "/fr/share/*",
+          "/en/share/*"
+        ]
+      }
+    ]
+  }
+}
+

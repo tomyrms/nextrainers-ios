@@ -1,0 +1,73 @@
+{
+	"appId": "com.nextrainers.app",
+	"appName": "Nextrainers",
+	"webDir": "public",
+	"server": {
+		"url": "https://app.nextrainers.com",
+		"androidScheme": "https",
+		"iosScheme": "https",
+		"allowNavigation": [
+			"app.nextrainers.com",
+			"clerk.app.nextrainers.com",
+			"*.nextrainers.com",
+			"accounts.google.com",
+			"appleid.apple.com",
+			"*.google.com",
+			"*.apple.com",
+			"*.clerk.accounts.dev",
+			"*.clerk.com"
+		]
+	},
+	"ios": {
+		"contentInset": "never"
+	},
+	"backgroundColor": "#121517",
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": true,
+			"launchShowDuration": 1500,
+			"backgroundColor": "#121517",
+			"showSpinner": false,
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP",
+			"splashFullScreen": true,
+			"splashImmersive": true
+		},
+		"StatusBar": {
+			"style": "dark",
+			"backgroundColor": "#121517",
+			"overlaysWebView": false
+		},
+		"Browser": {
+			"presentationStyle": "popover"
+		},
+		"App": {},
+		"Keyboard": {
+			"resize": "body",
+			"resizeOnFullScreen": true
+		},
+		"SocialLogin": {
+			"google": {
+				"androidClientId": "795115721179-bogvn62q4gv9bp7u1l3rrdmq329010mm.apps.googleusercontent.com",
+				"iosClientId": "795115721179-jb1g2gti6a86bkh2fgag3g8qmioe7h8m.apps.googleusercontent.com",
+				"forceCodeForRefreshToken": true
+			}
+		}
+	},
+	"packageClassList": [
+		"FileOpenerPlugin",
+		"AppPlugin",
+		"CAPBrowserPlugin",
+		"FilesystemPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"PushNotificationsPlugin",
+		"SharePlugin",
+		"SplashScreenPlugin",
+		"StatusBarPlugin",
+		"AppTrackingTransparencyPlugin",
+		"FacebookAnalyticsPlugin",
+		"SocialLoginPlugin",
+		"PurchasesPlugin"
+	]
+}

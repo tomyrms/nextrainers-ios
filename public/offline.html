@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Offline</title>
+  <style>
+    :root {
+      --bg:          #121517;
+      --bg-lighter:  #232A2F;
+      --primary:     #7DE2CE;
+      --inverse:     #FF4267;
+      --secondary:   #B57DE2;
+      --accent:      #847DE2;
+      --darker:      #1C1C1C;
+      --lighter:     #FFFFFF;
+      --border:      rgba(255,255,255,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--lighter);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: env(safe-area-inset-top, 24px) 32px env(safe-area-inset-bottom, 24px);
+      overflow: hidden;
+    }
+
+    /* ── Ambient glow blobs ── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      pointer-events: none;
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+    .blob-1 {
+      width: 320px; height: 320px;
+      background: var(--primary);
+      top: -80px; left: -80px;
+      animation-delay: 0s;
+    }
+    .blob-2 {
+      width: 260px; height: 260px;
+      background: var(--secondary);
+      bottom: -60px; right: -60px;
+      animation-delay: -3s;
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(20px, 20px) scale(1.08); }
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Icon ── */
+    .icon-wrap {
+      width: 80px; height: 80px;
+      border-radius: 22px;
+      background: rgba(255,66,103,0.12);
+      border: 1px solid rgba(255,66,103,0.25);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,66,103,0); }
+      50%       { box-shadow: 0 0 0 12px rgba(255,66,103,0.12); }
+    }
+    .icon-wrap svg {
+      width: 36px; height: 36px;
+      stroke: var(--inverse);
+    }
+
+    /* ── Text ── */
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: var(--lighter);
+      text-align: center;
+      margin-bottom: 10px;
+      animation: fadeUp 0.5s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    /* ── Tips ── */
+    .tips {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .tip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+    .tip-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ── Button ── */
+    button {
+      width: 100%;
+      height: 48px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: var(--darker);
+      position: relative;
+      overflow: hidden;
+      background: var(--primary);
+      background-image:
+        radial-gradient(at 20% 30%, rgba(160,235,217,0.8) 0px, transparent 50%),
+        radial-gradient(at 80% 70%, rgba(95,212,186,0.7) 0px, transparent 50%),
+        radial-gradient(at 50% 10%, rgba(232,250,246,0.6) 0px, transparent 45%);
+      box-shadow: 0 0 20px 4px rgba(125,226,206,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
+      animation: fadeUp 0.5s 0.25s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    button:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+    }
+    button.loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* spinner inside button */
+    .spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(28,28,28,0.3);
+      border-top-color: var(--darker);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      position: absolute;
+      right: 18px; top: 50%; transform: translateY(-50%);
+    }
+    button.loading .spinner { display: block; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    /* ── Brand footer ── */
+    .brand {
+      margin-top: 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      animation: fadeUp 0.5s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="card">
+    <div class="icon-wrap">
+      <!-- wifi-off icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+           fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="2" y1="2" x2="22" y2="22"/>
+        <path d="M8.5 16.5a5 5 0 0 1 7 0"/>
+        <path d="M2 8.82a15 15 0 0 1 4.17-2.65"/>
+        <path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/>
+        <path d="M16.85 11.25a10 10 0 0 1 2.22 1.68"/>
+        <path d="M5 13a10 10 0 0 1 5.24-2.76"/>
+        <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+
+    <h1 id="t-title"></h1>
+    <p id="t-desc"></p>
+
+    <div class="tips">
+      <div class="tip"><span class="tip-dot"></span><span id="t-tip1"></span></div>
+      <div class="tip"><span class="tip-dot"></span><span id="t-tip2"></span></div>
+      <div class="tip"><span class="tip-dot"></span><span id="t-tip3"></span></div>
+    </div>
+
+    <button id="retry-btn" onclick="retry()">
+      <span id="t-btn"></span>
+      <div class="spinner"></div>
+    </button>
+  </div>
+
+  <div class="brand">Nextrainers</div>
+
+  <script>
+    const TRANSLATIONS = {
+      fr: {
+        title:   'Pas de connexion',
+        desc:    'Nextrainers nécessite une connexion à Internet pour fonctionner. Vérifie ton réseau et réessaie.',
+        tip1:    'Active le Wi-Fi ou les données mobiles',
+        tip2:    'Désactive puis réactive le mode avion',
+        tip3:    'Rapproche-toi d\'un point d\'accès',
+        btn:     'Réessayer',
+        checking:'Vérification…',
+      },
+      en: {
+        title:   'No connection',
+        desc:    'Nextrainers requires an internet connection to work. Check your network and try again.',
+        tip1:    'Turn on Wi-Fi or mobile data',
+        tip2:    'Toggle airplane mode off and back on',
+        tip3:    'Move closer to a hotspot or router',
+        btn:     'Try again',
+        checking:'Checking…',
+      },
+      de: {
+        title:   'Keine Verbindung',
+        desc:    'Nextrainers benötigt eine Internetverbindung. Überprüfe dein Netzwerk und versuche es erneut.',
+        tip1:    'WLAN oder mobile Daten aktivieren',
+        tip2:    'Flugmodus aus- und wieder einschalten',
+        tip3:    'Näher an einen Hotspot herantreten',
+        btn:     'Erneut versuchen',
+        checking:'Wird geprüft…',
+      },
+    };
+
+    const lang = (navigator.language || 'fr').slice(0, 2).toLowerCase();
+    const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
+
+    document.getElementById('t-title').textContent = t.title;
+    document.getElementById('t-desc').textContent  = t.desc;
+    document.getElementById('t-tip1').textContent  = t.tip1;
+    document.getElementById('t-tip2').textContent  = t.tip2;
+    document.getElementById('t-tip3').textContent  = t.tip3;
+    document.getElementById('t-btn').textContent   = t.btn;
+
+    function retry() {
+      const btn   = document.getElementById('retry-btn');
+      const label = document.getElementById('t-btn');
+      btn.classList.add('loading');
+      label.textContent = t.checking;
+
+      fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
+        .then(() => { window.location.href = 'https://app.nextrainers.com'; })
+        .catch(() => {
+          btn.classList.remove('loading');
+          label.textContent = t.btn;
+          btn.style.animation = 'none';
+          btn.style.transform = 'translateX(-6px)';
+          setTimeout(() => btn.style.transform = 'translateX(6px)', 80);
+          setTimeout(() => btn.style.transform = 'translateX(0)', 160);
+        });
+    }
+  </script>
+</body>
+</html>

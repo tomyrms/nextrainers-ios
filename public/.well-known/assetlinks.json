@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.nextrainers.app",
+      "sha256_cert_fingerprints": [
+        "CB:46:48:C9:38:F2:E2:24:CC:7E:A3:D5:48:BB:FA:05:B6:70:68:EB:4E:A2:A2:43:27:E3:D1:E8:6A:72:72:FD"
+      ]
+    }
+  }
+]
+
