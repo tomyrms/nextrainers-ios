@@ -19,9 +19,9 @@ Feather and your own Apple ID.
 | Info.plist keys | IPA `Info.plist` (URL schemes, FB, Google, usage strings, background modes, Live Activities) | merged into template |
 | `GenerationProgressPlugin.swift` | JS contract in the web bundle + binary symbols | re-implemented (ActivityKit, push token events) |
 | `MainViewController` / storyboard wiring | binary symbols | re-implemented |
-| Widget extension | binary strings/symbols (`GenerationActivityAttributes`, `GenerationLockScreenView`, `GenerationTimerText`) | sources included, target wiring manual (see `ios/App/GenerationActivityWidget/README.md`) |
+| Widget extension | binary strings/symbols (`GenerationActivityAttributes`, `GenerationLockScreenView`, `GenerationTimerText`) | wired as an app-extension target (`scripts/wire-widget.cjs`, idempotent) and embedded in `App.app/PlugIns`; CI asserts the appex is present |
 | App icon | IPA PNGs | upscaled 120→1024 for the single-size asset catalog |
-| Firebase Messaging (AppDelegate) | IPA `AppDelegate` + `FIRMessaging` symbols | not yet wired (v2) |
+| Firebase Messaging (AppDelegate) | IPA `AppDelegate` + `FIRMessaging` symbols | SPM dependency on the App target; `FirebaseApp.configure()` only runs when `GoogleService-Info.plist` is bundled (not committed) |
 
 ## Build
 
